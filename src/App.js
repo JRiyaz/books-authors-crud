@@ -1,7 +1,13 @@
+import Navbar from "./navbar";
+import Home from "./home";
+
 function App() {
   return (
     <div className="App">
-      <div className="content">Hello React</div>
+      <Navbar />
+      <div className="content">
+        <Home />
+      </div>
     </div>
   );
 }
