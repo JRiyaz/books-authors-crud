@@ -2,7 +2,7 @@ const BlogList = (props) => {
   return (
     <div className="block-list">
       <h2>{props.title}</h2>
-
+      {props.blogs.length <= 0 && <h1>Book list is empty</h1>}
       {props.blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>
           <h1>{blog.title}</h1>
