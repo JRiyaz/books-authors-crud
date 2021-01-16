@@ -15,7 +15,7 @@ const BlogList = (props) => {
           <p>
             Written by: <strong>{blog.author}</strong>
           </p>
-
+          <br />
           <button type="button" onClick={() => props.onDelete(blog.id)}>
             Delete Blog
           </button>
