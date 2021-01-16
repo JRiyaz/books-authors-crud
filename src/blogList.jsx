@@ -1,7 +1,12 @@
 const BlogList = (props) => {
+  const len = props.blogs.length;
   return (
     <div className="block-list">
-      <h2>{props.title}</h2>
+      {/* Show a message `Book List is Empty' when list is empty */}
+      {len <= 0 && <h1>Book List is Empty</h1>}
+
+      {/* Show a h2 when list is not empty */}
+      {len > 0 && <h2>{props.title}</h2>}
 
       {props.blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>
