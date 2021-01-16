@@ -2,6 +2,7 @@ import Navbar from "./navbar";
 import Home from "./home";
 // use router
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Create from "./create";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
             {/* Home route */}
             <Route exact path="/">
               <Home />
+            </Route>
+            {/* create route */}
+            <Route exact path="/create">
+              <Create />
             </Route>
           </Switch>
         </div>
