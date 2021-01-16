@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./blogList";
 
 const Home = () => {
   // declare and initialize state
-  const [blogs, setBlogs] = useState([
-    { title: "My new website", body: "lorem ipsum...", author: "mario", id: 1 },
-    { title: "Welcome party!", body: "lorem ipsum...", author: "yoshi", id: 2 },
-    { title: "Web dev top", body: "lorem ipsum...", author: "mario", id: 3 },
-  ]);
+  const [blogs, setBlogs] = useState(null);
+
+  // add loading effect
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Show loading message for 1 sec
+    setTimeout(() => {
+      fetch("http://localhost:9000/blogs")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setBlogs(data);
+          // hide the loading message once data is loaded
+          setLoading(false);
+        });
+    }, 1000);
+  }, []);
 
   // handle delete arrow function
   const handleDelete = (id) => {
@@ -17,7 +31,11 @@ const Home = () => {
 
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs" onDelete={handleDelete} />
+      {/* Show Loading message until data is ready */}
+      {loading && <strong>Loading....</strong>}
+      {blogs && (
+        <BlogList blogs={blogs} title="All Blogs" onDelete={handleDelete} />
+      )}
     </div>
   );
 };
