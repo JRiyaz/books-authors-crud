@@ -12,13 +12,15 @@ const BlogList = (props) => {
         <div className="blog-preview" key={blog.id}>
           <h1>{blog.title}</h1>
 
+          <br />
+          <p>{blog.body}</p>
+
+          <br />
           <p>
             Written by: <strong>{blog.author}</strong>
           </p>
+
           <br />
-          <button type="button" onClick={() => props.onDelete(blog.id)}>
-            Delete Blog
-          </button>
         </div>
       ))}
     </div>
