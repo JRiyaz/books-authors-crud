@@ -1,4 +1,4 @@
-export const BlogList = (props) => {
+const BlogList = (props) => {
   return (
     <div className="block-list">
       <h2>{props.title}</h2>
@@ -10,6 +10,10 @@ export const BlogList = (props) => {
           <p>
             Written by: <strong>{blog.author}</strong>
           </p>
+
+          <button type="button" onClick={() => props.onDelete(blog.id)}>
+            Delete Blog
+          </button>
         </div>
       ))}
     </div>
